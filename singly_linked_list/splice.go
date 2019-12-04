@@ -1,38 +1,27 @@
 package singlylinkedlist
 
-// import "fmt"
+func (linkedList *Node) Splice(startIndex, deleteCount int, data interface{}) {
+	var deleteChecker int = 1
+	var splicedHeadNode *Node
+	var splicedTailNode *Node
 
-// func (node *Node) Splice(startIndex, deleteCount int, data interface{}) {
-// 	var index int = 0
-// 	var deleteChecker int = 1
-// 	var splicedNode *Node
-// 	prevNode := node
-// 	curNode := node
-// 	nxtNode := node
-
-// 	for curNode.Next != nil {
-// 		if index >= startIndex {
-// 			if deleteCount > 0 && deleteChecker <= deleteCount {
-// 				if index == startIndex && startIndex > 0 {
-// 					splicedNode = prevNode
-// 				}
-// 				if index-1 == startIndex && startIndex == 0 {
-// 					splicedNode = nxtNode
-// 					fmt.Println(splicedNode)
-// 				}
-// 				if deleteChecker == deleteCount {
-// 					splicedNode.Next = nxtNode
-// 					fmt.Println(nxtNode)
-// 				}
-// 				deleteChecker++
-// 			}
-// 			if data != nil {
-
-// 			}
-// 		}
-// 		prevNode = curNode
-// 		curNode = curNode.Next
-// 		nxtNode = curNode.Next
-// 		index++
-// 	}
-// }
+	linkedList.ForEach(func(currentNode *Node, index int) {
+		if index >= startIndex-1 && startIndex != 0 {
+			if deleteCount > 0 {
+				if deleteChecker == 1 {
+					splicedHeadNode = currentNode
+				}
+				if deleteChecker == deleteCount+2 {
+					splicedTailNode = currentNode
+				}
+				deleteChecker++
+			}
+		} else if startIndex == 0 {
+			if deleteCount > 0 && index == deleteCount {
+				splicedHeadNode = currentNode
+				splicedTailNode = currentNode.Next
+			}
+		}
+	})
+	splicedHeadNode.Next = splicedTailNode
+}

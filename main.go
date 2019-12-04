@@ -6,20 +6,19 @@ import (
 )
 
 func main() {
-	node := singlyLinkedList.Node{}
-	node.Push(0)
-	node.Push(1)
-	node.Push(2)
-	node.Push(3)
-	node.Push(4)
-	node.Push(5)
-	node.Push(6)
-	node.Push(7)
-	node.Push(8)
-	node.Push(9)
-	node.Push(10)
-
-	node.ForEach(func(index int, currentNode *singlyLinkedList.Node) {
-		fmt.Printf("Index: %v has value: %v point to: %v \n", index, currentNode.Value, *currentNode)
-	})
+	linkedList := singlyLinkedList.Node{}
+	linkedList.Push(0)
+	linkedList.Push(1)
+	linkedList.Push(2)
+	linkedList.Push(3)
+	linkedList.Push(4)
+	linkedList.Push(5)
+	linkedList.Push(6)
+	linkedList.Push(7)
+	linkedList.Push(8)
+	linkedList.Push(9)
+	linkedList.Push(10)
+	linkedList.Push(11)
+	linkedList.Splice(0, 2, nil)
+	fmt.Printf("Result: %v \n", linkedList.Next.Next)
 }

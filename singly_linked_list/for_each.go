@@ -1,15 +1,16 @@
 package singlylinkedlist
 
-type Func func(index int, currentNode *Node)
+type forEachCallback func(currentNode *Node, index int)
 
-func (node *Node) ForEach(callback Func) {
+func (node *Node) ForEach(callback forEachCallback) {
 	var index int = 0
-	var length int = node.Length()
-	for index < length {
-		if callback != nil {
-			callback(index, node)
-		}
+	for node.Next != nil {
+		callback(node, index)
 		node = node.Next
 		index++
+	}
+	if node.Next == nil {
+		callback(node, index)
+		return
 	}
 }

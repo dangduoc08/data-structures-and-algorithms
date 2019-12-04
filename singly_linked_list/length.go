@@ -1,7 +1,7 @@
 package singlylinkedlist
 
-func (node *Node) Length() int {
-	currentNode := node
+func (note *Node) Length() int {
+	currentNode := note
 	var length int = 1
 	for currentNode.Next != nil {
 		currentNode = currentNode.Next
