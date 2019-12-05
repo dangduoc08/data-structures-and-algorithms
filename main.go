@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+
 	singlyLinkedList "github.com/dangduoc08/data-structures-and-algorithms/singly_linked_list"
 )
 
@@ -18,7 +19,9 @@ func main() {
 	linkedList.Push(8)
 	linkedList.Push(9)
 	linkedList.Push(10)
-	linkedList.Push(11)
-	linkedList.Splice(0, 2, nil)
-	fmt.Printf("Result: %v \n", linkedList.Next.Next)
+	linkedList.Splice(0, 11, 11, 12, 13)
+	linkedList.ForEach(func(currentNode *singlyLinkedList.Node, index int) {
+		fmt.Println(*currentNode)
+	})
+	fmt.Printf("Linked list length: %v \n", linkedList.Length())
 }
