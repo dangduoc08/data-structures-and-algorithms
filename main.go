@@ -1,9 +1,8 @@
 package main
 
 import (
-	"fmt"
-
 	singlyLinkedList "github.com/dangduoc08/data-structures-and-algorithms/singly_linked_list"
+	"github.com/dangduoc08/data-structures-and-algorithms/sort"
 )
 
 func main() {
@@ -20,8 +19,14 @@ func main() {
 	linkedList.Push(9)
 	linkedList.Push(10)
 	linkedList.Splice(0, 11, 11, 12, 13)
-	linkedList.ForEach(func(currentNode *singlyLinkedList.Node, index int) {
-		fmt.Println(*currentNode)
+
+	slice := []int{10, 9, 8, 7, 6, 5, 4, 3, 2, 1}
+	sort.InsertionSort(&slice, func(a, b int) bool {
+		return a > b
 	})
-	fmt.Printf("Linked list length: %v \n", linkedList.Length())
+
+	slice1 := []int{10, 9, 8, 7, 6, 5, 4, 3, 2, 1}
+	sort.BubbleSort(&slice1, func(a, b int) bool {
+		return a > b
+	})
 }

@@ -1,20 +1,22 @@
 package sort
 
-import "fmt"
+type insertionSortCallback func(a, b int) bool
 
-func InsertionSort(slice *[]int) {
-	var sliceLength int = len(*slice)
-	for index, value := range *slice {
-		var j int = index + 1
-		if j >= sliceLength {
-			j = index
-		}
-		for value > (*slice)[j] {
-			fmt.Println(value)
-			fmt.Println((*slice)[j])
-			cloneValue := value
-			(*slice)[index] = (*slice)[j]
-			(*slice)[j] = cloneValue
+func InsertionSort(slice *[]int, callback insertionSortCallback) {
+	var sliceValue []int = *slice
+	for i, _ := range sliceValue {
+		var j int = i
+		if j > 0 {
+			compareOperation := sliceValue[j] < sliceValue[j-1]
+			if callback != nil {
+				compareOperation = callback(sliceValue[j-1], sliceValue[j])
+			}
+			for j > 0 && compareOperation {
+				var temp int = sliceValue[j-1]
+				sliceValue[j-1] = sliceValue[j]
+				sliceValue[j] = temp
+				j--
+			}
 		}
 	}
 }
