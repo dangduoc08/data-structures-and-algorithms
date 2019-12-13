@@ -1,8 +1,8 @@
 package sort
 
-type insertionSortCallback func(a, b int) bool
+type insertionCallback func(a, b int) bool
 
-func InsertionSort(slice *[]int, callback insertionSortCallback) {
+func Insertion(slice *[]int, callback insertionCallback) {
 	var sliceValue []int = *slice
 	for i, _ := range sliceValue {
 		var j int = i

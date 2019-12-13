@@ -21,12 +21,17 @@ func main() {
 	linkedList.Splice(0, 11, 11, 12, 13)
 
 	slice := []int{10, 9, 8, 7, 6, 5, 4, 3, 2, 1}
-	sort.InsertionSort(&slice, func(a, b int) bool {
+	sort.Insertion(&slice, func(a, b int) bool {
 		return a > b
 	})
 
 	slice1 := []int{10, 9, 8, 7, 6, 5, 4, 3, 2, 1}
-	sort.BubbleSort(&slice1, func(a, b int) bool {
+	sort.Bubble(&slice1, func(a, b int) bool {
+		return a > b
+	})
+
+	slice2 := []int{10, 9, 8, 7, 6, 5, 4, 3, 2, 1}
+	sort.Selection(&slice2, func(a, b int) bool {
 		return a > b
 	})
 }
