@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+
 	singlyLinkedList "github.com/dangduoc08/data-structures-and-algorithms/singly_linked_list"
 	"github.com/dangduoc08/data-structures-and-algorithms/sort"
 )
@@ -34,4 +36,9 @@ func main() {
 	sort.Selection(&slice2, func(a, b int) bool {
 		return a > b
 	})
+
+	slice3 := []int{10, 9, 8, 7, 6, 5, 4, 3, 2, 1}
+	fmt.Printf("Before: %v\n", slice3)
+	sort.Quick(slice3)
+	fmt.Printf("After: %v\n", slice3)
 }

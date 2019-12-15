@@ -6,8 +6,8 @@ func Selection(slice *[]int, callback selectionCallback) {
 	var sliceValue []int = *slice
 	var sliceLength int = len(sliceValue)
 	for i, _ := range sliceValue {
-		var flag int = sliceValue[i]
 		var index int = i
+		var flag int = sliceValue[index]
 		for j := i; j < sliceLength; j++ {
 			var elem int = sliceValue[j]
 			compareOperation := sliceValue[j] < flag
