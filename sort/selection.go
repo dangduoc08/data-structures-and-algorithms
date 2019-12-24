@@ -1,27 +1,24 @@
 package sort
 
-type selectionCallback func(a, b int) bool
+type selectionCallback func(flag, currentElem int) bool
 
-func Selection(slice *[]int, callback selectionCallback) {
-	var sliceValue []int = *slice
-	var sliceLength int = len(sliceValue)
-	for i, _ := range sliceValue {
-		var index int = i
-		var flag int = sliceValue[index]
+func Selection(slice []int, callback selectionCallback) {
+	var sliceLength int = len(slice)
+	for i, _ := range slice {
+		var flag int = slice[i] // flag = min || max
 		for j := i; j < sliceLength; j++ {
-			var elem int = sliceValue[j]
-			compareOperation := sliceValue[j] < flag
-			if callback != nil {
-				compareOperation = callback(flag, sliceValue[j])
-			}
-			if compareOperation {
-				flag = elem
-				index = j
-			}
-			if j == sliceLength-1 {
-				var temp int = sliceValue[i]
-				sliceValue[i] = flag
-				sliceValue[index] = temp
+			if j > 0 {
+				var currentElem int = slice[j]
+				var compareOperation bool
+				if callback != nil {
+					compareOperation = callback(flag, currentElem)
+				} else {
+					compareOperation = flag > currentElem
+				}
+				if compareOperation {
+					slice[i], slice[j] = swap(flag, currentElem)
+					flag = currentElem
+				}
 			}
 		}
 	}

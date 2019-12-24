@@ -1,21 +1,32 @@
 package sort
 
-type insertionCallback func(a, b int) bool
+type insertionCallback func(prevElem, currentElem int) bool
 
-func Insertion(slice *[]int, callback insertionCallback) {
-	var sliceValue []int = *slice
-	for i, _ := range sliceValue {
-		var j int = i
-		if j > 0 {
-			compareOperation := sliceValue[j] < sliceValue[j-1]
+func Insertion(slice []int, callback insertionCallback) {
+	for i, _ := range slice {
+		if i > 0 {
+			var j int = i
+			var prevElem int = slice[j-1]
+			var currentElem int = slice[j]
+			var compareOperation bool
 			if callback != nil {
-				compareOperation = callback(sliceValue[j-1], sliceValue[j])
+				compareOperation = callback(prevElem, currentElem)
+			} else {
+				compareOperation = prevElem > currentElem
 			}
-			for j > 0 && compareOperation {
-				var temp int = sliceValue[j-1]
-				sliceValue[j-1] = sliceValue[j]
-				sliceValue[j] = temp
+			for compareOperation {
+				slice[j-1], slice[j] = swap(prevElem, currentElem)
 				j--
+				if j <= 0 {
+					break
+				}
+				prevElem = slice[j-1]
+				currentElem = slice[j]
+				if callback != nil {
+					compareOperation = callback(prevElem, currentElem)
+				} else {
+					compareOperation = prevElem > currentElem
+				}
 			}
 		}
 	}
