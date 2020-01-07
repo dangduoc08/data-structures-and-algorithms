@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+
+	prefixTree "github.com/dangduoc08/data-structures-and-algorithms/prefix_tree"
 	singlyLinkedList "github.com/dangduoc08/data-structures-and-algorithms/singly_linked_list"
 	"github.com/dangduoc08/data-structures-and-algorithms/sort"
 )
@@ -37,10 +39,20 @@ func main() {
 	})
 
 	slice3 := []int{10, 9, 8, 7, 6, 5, 4, 3, 2, 1}
-	fmt.Printf("Before: %v\n", slice3)
 	sort.Quick(slice3, func(pivot, current int) bool {
 		return pivot < current
 	})
-	fmt.Printf("After: %v\n", slice3)
 
+	const (
+		USERS      = "/users"
+		PRODUCTS   = "/products"
+		CATEGORIES = "/categories"
+	)
+
+	tree := prefixTree.PrefixTree{}
+	tree.Insert(USERS)
+	tree.Insert(PRODUCTS)
+	var matched bool = tree.Contains(USERS)
+
+	fmt.Println(matched)
 }
