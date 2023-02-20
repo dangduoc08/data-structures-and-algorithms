@@ -1,11 +1,13 @@
 package palindromenumber
 
-func forInt(x int, cb func(n int)) {
+func genReverseNum(x int) int {
+	reverseX := 0
 	for x > 0 {
 		y := x % 10
+		reverseX = (reverseX * 10) + y
 		x = x / 10
-		cb(y)
 	}
+	return reverseX
 }
 
 func isPalindrome(x int) bool {
@@ -17,21 +19,5 @@ func isPalindrome(x int) bool {
 		return true
 	}
 
-	numArr := []int{}
-	forInt(x, func(n int) {
-		numArr = append(numArr, n)
-	})
-	l := len(numArr)
-
-	for i, n := range numArr {
-		if i <= (l/2)-1 {
-			if n != numArr[l-i-1] {
-				return false
-			}
-		} else {
-			break
-		}
-	}
-
-	return true
+	return x == genReverseNum(x)
 }
