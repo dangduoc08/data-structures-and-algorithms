@@ -30,5 +30,5 @@ Only 1771 contains an even number of digits.
 <br />
 
 ## Constraints:
-- `1 <= nums.length <= 500`
-- `1 <= nums[i] <= 105`
+- 1 <= nums.length <= 500
+- 1 <= nums[i] <= 10<sup>5</sup>

@@ -1,4 +1,4 @@
-# [9. Palindrome Number](palindrome-number)
+# [9. Palindrome Number](https://leetcode.com/problems/palindrome-number)
 
 Given an integer `x`, return `true` if `x` is a 
 `palindrome`, and false otherwise.
@@ -33,7 +33,7 @@ Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
 <br />
 
 ## Constraints:
-- `-231 <= x <= 231 - 1`
+- -2<sup>31</sup> <= x <= 2<sup>31</sup> - 1
 
 <br />
 
